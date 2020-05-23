@@ -10,8 +10,15 @@
         :root {
             background-color: #DFF8EB;
             color: #62466B;
-            font-family: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-            font-size: 1.1em;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a {
+            color: #2374AB;
         }
 
         a:link,
@@ -19,12 +26,8 @@
             text-decoration: none;
         }
 
-        a {
-            color: inherit;
-        }
-
         .container {
-            min-height: 95vh;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -36,9 +39,49 @@
             border: 1px solid #B5C2B7;
         }
 
-        .links {
-            color: #2374AB;
+        .mainLinks {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
             font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .mainLink {
+            margin: 0 0.2rem 0rem 0.2rem;
+        }
+
+        .otherLinks {
+            display: flex;
+            flex-direction: row;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .hiddenLinksContainer {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            margin-top: 1.4rem;
+        }
+
+        .smallLink {
+            margin: 0.2rem 0.8rem 0 0.8rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        #hiddenLinks,
+        #show,
+        #showOtherLinks:target {
+            display: none;
+        }
+
+        #showOtherLinks:target+#show,
+        #showOtherLinks:target~#hiddenLinks {
+            display: inherit;
         }
     </style>
 </head>
@@ -47,12 +90,26 @@
     <div class="container">
         <img src="./cg_avatar.jpg" class="avatar" alt="avatar" />
         <h1>Chirag Gupta</h1>
-        <div class="links">
-            <a href="https://twitter.com/chiraggupta">Twitter</a> |
-            <a href="https://github.com/chiraggupta">GitHub</a> |
-            <a href="https://www.linkedin.com/in/echirag/">LinkedIn</a>
+        <div class="mainLinks">
+            <a class="mainLink" href="https://twitter.com/chiraggupta">Twitter</a>
+            <span>|</span>
+            <a class="mainLink" href="https://github.com/chiraggupta">GitHub</a>
+            <span>|</span>
+            <a class="mainLink" href="https://www.linkedin.com/in/echirag/">LinkedIn</a>
         </div>
-    </div>
+        <div class="otherLinks">
+            <a href="#showOtherLinks" id="showOtherLinks">+ Old accounts and blogs</a>
+            <a href="#" id="show">- Old accounts and blogs</a>
+            <div id="hiddenLinks" class="hiddenLinksContainer">
+                <div class="smallLink"><a href="https://www.instagram.com/chiraggupta/">Instagram</a></div>
+                <div class="smallLink"><a href="https://guptachirag.tumblr.com">Tumblr</a></div>
+                <div class="smallLink"><a href="https://www.flickr.com/photos/guptachirag/">Flickr</a></div>
+                <div class="smallLink"><a href="https://woikr.com/author/chirag/">Woikr</a></div>
+                <div class="smallLink"><a href="https://guptachirag.blogspot.com">Blogger</a></div>
+                <div class="smallLink"><a href="https://futureofcomputing.blogspot.com">Future of
+                        Computing</a></div>
+            </div>
+        </div>
 </body>
 
 </html>
